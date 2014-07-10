@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1275FE7A-090C-464B-9BBC-9EF8A3C8586F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoreSystem</RootNamespace>
+    <AssemblyName>CoreSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\DateTimeConstants.cs" />
+    <Compile Include="Constants\DurationConstants.cs" />
+    <Compile Include="Constants\EmailTemplateConstants.cs" />
+    <Compile Include="Constants\HttpRequestConstants.cs" />
+    <Compile Include="Constants\QueryStringConstants.cs" />
+    <Compile Include="Constants\RegexConstants.cs" />
+    <Compile Include="DataStructures\Trees\Enums.cs" />
+    <Compile Include="DataStructures\Trees\SimpleSubtree.cs" />
+    <Compile Include="DataStructures\Trees\SimpleTree.cs" />
+    <Compile Include="DataStructures\Trees\SimpleTreeNode.cs" />
+    <Compile Include="DataStructures\Trees\SimpleTreeNodeList.cs" />
+    <Compile Include="Enums\SocialProviders.cs" />
+    <Compile Include="Enums\SortDirection.cs" />
+    <Compile Include="GenericExtensions.cs" />
+    <Compile Include="Helpers\DirectoryHelper.cs" />
+    <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\TaxHelperAus.cs" />
+    <Compile Include="Helpers\TripleDESEncryptHelper.cs" />
+    <Compile Include="Helpers\TypeHelper.cs" />
+    <Compile Include="Helpers\UnicodeHelper.cs" />
+    <Compile Include="Helpers\UriHelper.cs" />
+    <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Models\GeoRegion.cs" />
+    <Compile Include="Sys\Collections\Generic\ICollectionExtensions.cs" />
+    <Compile Include="Sys\Collections\Generic\IEnumerableExtensions.cs" />
+    <Compile Include="Sys\Collections\Generic\IListExtensions.cs" />
+    <Compile Include="Sys\Int32Extensions.cs" />
+    <Compile Include="Sys\Linq\Expressions\ExpressionHelper.cs" />
+    <Compile Include="Sys\DateTimeExtensions.cs" />
+    <Compile Include="Sys\Net\HttpWebRequestHelper.cs" />
+    <Compile Include="Sys\ObjectExtensions.cs" />
+    <Compile Include="Sys\StringExtensions.cs" />
+    <Compile Include="Sys\Text\StringBuilderExtensions.cs" />
+    <Compile Include="Sys\TimeSpanExtensions.cs" />
+    <Compile Include="Sys\TypeExtensions.cs" />
+    <Compile Include="Sys\Xml\Linq\XDocumentExtensions.cs" />
+    <Compile Include="Sys\Xml\XmlDocumentExtensions.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="%28nuget%29\content\" />
+    <Folder Include="%28nuget%29\lib\" />
+    <Folder Include="%28nuget%29\tools\" />
+    <Folder Include="Sys\ComponentModel\DataAnnotations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="%28nuget%29\CoreSystem.nuspec">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="%28nuget%29\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
