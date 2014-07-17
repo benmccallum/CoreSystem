@@ -3,6 +3,16 @@
 public static class DateTimeExtensions
 {
     /// <summary>
+    /// Converts a DateTime to the last day of it's financial year.
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static DateTime ToLastDayOfFinancialYear(this DateTime dt)
+    {
+        return new DateTime((dt.Month > 6) ? dt.Year + 1 : dt.Year, 6, 30, 12, 0, 0, 0, dt.Kind);
+    }
+    
+    /// <summary>
     /// For a given date, e.g. 2013-04-18, returns 2013-04-18 23:59:59.
     /// </summary>
     /// <param name="d"></param>
