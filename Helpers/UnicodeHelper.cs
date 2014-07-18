@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoreSystem.Helpers
 {
+    /// <summary>
+    /// Unicode helper.
+    /// </summary>
     public class UnicodeHelper
     {
         /// <summary>
@@ -13,8 +16,9 @@ namespace CoreSystem.Helpers
         /// Source: http://meta.stackoverflow.com/a/7696
         /// </summary>
         /// <param name="c">Char to remap.</param>
+        /// <param name="otherwiseUseSelf">If no mapping found, should it return itself?</param>
         /// <returns>Suitable ascii string or empty string.</returns>
-        public static string RemapInternationalCharToAscii(char c)
+        public static string RemapInternationalCharToAscii(char c, bool? otherwiseUseSelf = true)
         {
             string s = c.ToString().ToLowerInvariant();
             if ("àåáâäãåą".Contains(s))
@@ -89,10 +93,29 @@ namespace CoreSystem.Helpers
             {
                 return "j";
             }
-            else
+            else if (otherwiseUseSelf.GetValueOrDefault())
             {
-                return "";
+                return c.ToString();
             }
+            return "";
+        }
+
+        /// <summary>
+        /// Remaps International chars in a string to suitable ASCII chars if possible, else empty.
+        /// </summary>
+        /// <param name="value">A string.</param>
+        /// <param name="capitaliseFirstLetter">Should the first char be capitalised?</param>
+        /// <returns>The string with weird chars normalised to ascii.</returns>
+        public static string RemapInternationalCharsToAscii(string value, bool capitaliseFirstLetter = false)
+        {
+            var firstChar = RemapInternationalCharToAscii(value[0]);
+            var sb = new StringBuilder((capitaliseFirstLetter) ? firstChar.ToUpper() : firstChar, value.Length);
+
+            foreach (var ch in value.ToCharArray().Skip(1))
+            {
+                sb.Append(RemapInternationalCharToAscii(ch));
+            }
+            return sb.ToString();
         }
     }
 }
