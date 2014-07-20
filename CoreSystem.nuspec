@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>CoreSystem</id>
-        <version>1.0.0</version>
-        <title>CoreSystem</title>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$id$</title>
         <authors>Ben McCallum</authors>
         <owners>Ben McCallum</owners>
-        <description>Core system library of extension methods, helpers and other goodies.</description>
+        <description>A library of core helpers, extensions, constants, enums and other useful things for all .NET projects.</description>
 		<projectUrl>http://github.com/benmccallum/CoreSystem</projectUrl>
         <tags>Core System Library Extensions Helpers Common</tags>
-        <frameworkAssemblies>
-            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
-            <frameworkAssembly assemblyName="System" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Core" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Data" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
-            <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
-        </frameworkAssemblies>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
+		</frameworkAssemblies>
     </metadata>
 </package>
