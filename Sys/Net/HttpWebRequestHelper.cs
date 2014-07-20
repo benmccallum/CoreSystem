@@ -17,7 +17,7 @@ namespace CoreSystem.Sys.Net
                 webRequest = HttpWebRequest.Create(url);
                 webRequest.GetResponse();
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 // TODO: Logging
                 //ErrorHandling.LogError("WebRequestHelper::MakeHttpRequest", "Failed trying to hit url: " + url + ".", ex.Message, ErrorHandling.LogOption.All);

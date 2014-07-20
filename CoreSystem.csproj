@@ -91,11 +91,6 @@
     <Folder Include="Sys\ComponentModel\DataAnnotations\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="%28nuget%29\CoreSystem.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="%28nuget%29\readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

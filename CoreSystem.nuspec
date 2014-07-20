@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>CoreSystem</id>
+        <version>1.0.1</version>
+        <title>CoreSystem</title>
+        <authors>Ben McCallum</authors>
+        <owners>Ben McCallum</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Core system library of extension methods, helpers and other goodies.</description>
+        <copyright>Copyright 2014</copyright>
+        <tags>Core System Library Extensions Helpers Common</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
+            <frameworkAssembly assemblyName="System" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Data" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="bin\Release\CoreSystem.dll" target="lib\net45\CoreSystem.dll" />
+        <file src="(nuget)\readme.txt" target="readme.txt" />
+    </files>
+</package>

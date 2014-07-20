@@ -59,7 +59,7 @@ namespace CoreSystem.Helpers
             {
                 fileText = File.ReadAllText(htmlTemplateFilePath);
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 //Log.Error("[MailHelper] was unable to read text from file at path: " + htmlTemplateFilePath + ".", ex, typeof(MailHelper));
                 throw;
@@ -134,7 +134,7 @@ namespace CoreSystem.Helpers
                     }
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 //Log.Error(String.Format("[MailHelper] was unable to send email with subject [{0}] to email address/es [{1}].", subject, toAddressesDelimited), ex, typeof(MailHelper));
                 throw;
