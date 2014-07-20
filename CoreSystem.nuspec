@@ -20,8 +20,4 @@
             <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
         </frameworkAssemblies>
     </metadata>
-    <files>
-        <file src="bin\Release\CoreSystem.dll" target="lib\net45\CoreSystem.dll" />
-        <file src="(nuget)\readme.txt" target="readme.txt" />
-    </files>
 </package>
