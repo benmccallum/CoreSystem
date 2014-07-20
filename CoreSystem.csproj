@@ -85,15 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="%28nuget%29\content\" />
-    <Folder Include="%28nuget%29\lib\" />
-    <Folder Include="%28nuget%29\tools\" />
     <Folder Include="Sys\ComponentModel\DataAnnotations\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="%28nuget%29\readme.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

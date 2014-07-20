@@ -2,13 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>CoreSystem</id>
-        <version>1.0.1</version>
+        <version>1.0.0</version>
         <title>CoreSystem</title>
         <authors>Ben McCallum</authors>
         <owners>Ben McCallum</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Core system library of extension methods, helpers and other goodies.</description>
-        <copyright>Copyright 2014</copyright>
+		<projectUrl>http://github.com/benmccallum/CoreSystem</projectUrl>
         <tags>Core System Library Extensions Helpers Common</tags>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
