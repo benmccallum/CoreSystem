@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +64,10 @@
     <Compile Include="Helpers\UnicodeHelper.cs" />
     <Compile Include="Helpers\UriHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Infrastructure\Config\ConfigurationManager.cs" />
+    <Compile Include="Infrastructure\Config\IConfigurationManager.cs" />
+    <Compile Include="Mapping\IMapToExisting.cs" />
+    <Compile Include="Mapping\IMapToNew.cs" />
     <Compile Include="Models\GeoRegion.cs" />
     <Compile Include="Sys\Collections\Generic\ICollectionExtensions.cs" />
     <Compile Include="Sys\Collections\Generic\IEnumerableExtensions.cs" />
