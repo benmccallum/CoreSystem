@@ -15,21 +15,21 @@ public static class DateTimeExtensions
     /// <summary>
     /// For a given date, e.g. 2013-04-18, returns 2013-04-18 23:59:59.
     /// </summary>
-    /// <param name="d"></param>
+    /// <param name="dt"></param>
     /// <returns>A datetime that includes the last second of the day</returns>
-    public static DateTime ToEndDateTime(this DateTime d)
+    public static DateTime ToEndDateTime(this DateTime dt)
     {
-        if (d > DateTime.MinValue)
+        if (dt > DateTime.MinValue)
         {
-            return new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
+            return new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59);
         }
-        return d;
+        return dt;
     }
 
     /// <summary>
     /// Converts datetime to simple xyz ago string for display.
     /// </summary>
-    /// <param name="dt">Input datetime </param>
+    /// <param name="dt">Input datetime.</param>
     /// <returns>Examples: "{0} day{1} ago" OR "{0} hour{1} ago" OR "{0} mins ago"</returns>
     public static string ToSimpleAgoString(this DateTime dt)
     {
@@ -54,5 +54,39 @@ public static class DateTimeExtensions
         }
 
         return string.Empty;
+    }
+    
+    /// <summary>
+    /// Get's the time portion like "6:27pm" or "1:30am".
+    /// </summary>
+    /// <param name="dt">Input datetime.</param>
+    /// <returns></returns>
+    public static string GetTwelveHourTime(this DateTime dt)
+    {
+        return dt.ToString("h:mmtt").ToLower();
+    }
+
+    /// <summary>
+    /// Get day of month English suffix - e.g. 1 = "st", 3 = "rd", 5 = "th", 22 = "nd".
+    /// </summary>
+    /// <param name="dt">Input datetime.</param>
+    /// <returns>Suffix string.</returns>
+    public static string GetDaySuffix(this DateTime dt)
+    {
+        switch (dt.Day)
+        {
+            case 1:
+            case 21:
+            case 31:
+                return "st";
+            case 2:
+            case 22:
+                return "nd";
+            case 3:
+            case 23:
+                return "rd";
+            default:
+                return "th";
+        }
     }
 }

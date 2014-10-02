@@ -58,6 +58,7 @@
     <Compile Include="GenericExtensions.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\RandomProvider.cs" />
     <Compile Include="Helpers\TaxHelperAus.cs" />
     <Compile Include="Helpers\TripleDESEncryptHelper.cs" />
     <Compile Include="Helpers\TypeHelper.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Sys\Int32Extensions.cs" />
     <Compile Include="Sys\Linq\Expressions\ExpressionHelper.cs" />
     <Compile Include="Sys\DateTimeExtensions.cs" />
+    <Compile Include="Sys\Linq\IQueryableExtensions.cs" />
     <Compile Include="Sys\Net\HttpWebRequestHelper.cs" />
     <Compile Include="Sys\ObjectExtensions.cs" />
     <Compile Include="Sys\StringExtensions.cs" />
