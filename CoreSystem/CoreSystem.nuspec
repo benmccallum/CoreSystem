@@ -11,6 +11,7 @@
         <tags>Core System Library Extensions Helpers Common</tags>
 		<frameworkAssemblies>
 			<frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
 			<frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
 			<frameworkAssembly assemblyName="System.Xml" targetFramework="" />
 			<frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
