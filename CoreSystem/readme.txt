@@ -2,5 +2,5 @@
 CoreSystem - Installation Instructions
 ================================================================================================================================================================================
 
-1. In <appSettings>, ensure that you have the following element and give it a 46 char length randomized value:
+1. In <appSettings>, ensure that you have the following element and give it a 16 char length randomized value:
 	<add key="CoreSystem.Passphrase" value="" />

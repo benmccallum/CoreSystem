@@ -1,9 +1,9 @@
 ﻿using CoreSystem.Infrastructure.Config;
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
 
 namespace CoreSystem.Helpers
 {
@@ -22,19 +22,21 @@ namespace CoreSystem.Helpers
         }
 
         private static TripleDESCryptoServiceProvider GetProvider()
-        {            
-            var hash = new SHA512CryptoServiceProvider();
-            var keyArray = hash.ComputeHash(Encoding.UTF8.GetBytes(Passphrase));
-            var trimmedBytes = new byte[24];
-            Buffer.BlockCopy(keyArray, 0, trimmedBytes, 0, 24);
-            keyArray = trimmedBytes;
-
-            return new TripleDESCryptoServiceProvider
+        {
+            try
             {
-                Key = keyArray,
-                Mode = CipherMode.ECB,
-                Padding = PaddingMode.PKCS7
-            };
+                return new TripleDESCryptoServiceProvider
+                {
+                    Key = Encoding.UTF8.GetBytes(Passphrase),
+                    Mode = CipherMode.ECB,
+                    Padding = PaddingMode.PKCS7
+                };
+            }
+            catch (Exception)
+            {
+                throw new CryptographicException("appSetting CoreSystem.Passphrase must be of correct length (16 chars)");
+                throw;
+            }
         }
 
         public static string Encrypt(string cleartext)
