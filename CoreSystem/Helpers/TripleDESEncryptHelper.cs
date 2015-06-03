@@ -1,5 +1,6 @@
 ﻿using CoreSystem.Infrastructure.Config;
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace CoreSystem.Helpers
     /// <summary>
     /// Helper for encrypt/decrypt operations using TripleDES.
     /// </summary>
-    public class TripleDESEncryptHelper
+    public class TripleDESHelper
     {
         private static string passphrase;
         private static string Passphrase
@@ -19,62 +20,67 @@ namespace CoreSystem.Helpers
             }
         }
 
+        private static TripleDESCryptoServiceProvider GetProvider()
+        {
+            return new TripleDESCryptoServiceProvider
+            {
+                Key = Encoding.UTF8.GetBytes(Passphrase),
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+        }
+
         public static string Encrypt(string cleartext)
         {
-            byte[] Results;
-            var UTF8 = new UTF8Encoding();
-
-            using (var HashProvider = new MD5CryptoServiceProvider())
-            {
-                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));
-                using (var TDESAlgorithm = new TripleDESCryptoServiceProvider() { Key = TDESKey, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                {
-                    byte[] DataToEncrypt = UTF8.GetBytes(cleartext);
-                    try
-                    {
-                        using (ICryptoTransform Encryptor = TDESAlgorithm.CreateEncryptor())
-                        {
-                            Results = Encryptor.TransformFinalBlock(DataToEncrypt, 0, DataToEncrypt.Length);
-                        }
-                    }
-                    finally
-                    {
-                        TDESAlgorithm.Clear();
-                        HashProvider.Clear();
-                    }
-                }
-            }
-
-            return Convert.ToBase64String(Results);
+            return Convert.ToBase64String(EncryptBytes(Encoding.UTF8.GetBytes(cleartext)));
         }
 
         public static string Decrypt(string ciphertext)
         {
-            byte[] Results;
-            var UTF8 = new UTF8Encoding();
-
-            using (var HashProvider = new MD5CryptoServiceProvider())
+            return Encoding.UTF8.GetString(DecryptBytes(Convert.FromBase64String(ciphertext)));
+        }
+        
+        public static byte[] EncryptBytes(byte[] input)
+        {
+            using (var tripleDES = GetProvider())
+            using (var cTransform = tripleDES.CreateEncryptor())
             {
-                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));
-                using (var TDESAlgorithm = new TripleDESCryptoServiceProvider() { Key = TDESKey, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                return Transform(input, cTransform);
+            }
+        }
+
+        public static byte[] DecryptBytes(byte[] input)
+        {
+            using (var tripleDES = GetProvider())
+            using (var cTransform = tripleDES.CreateDecryptor())
+            {
+                return Transform(input, cTransform);
+            }
+        }
+
+        /// <summary>
+        /// Encrypt or Decrypt bytes.
+        /// </summary>
+        private static byte[] Transform(byte[] input, ICryptoTransform cryptoTransform)
+        {
+            // Create the necessary streams
+            using (var memory = new MemoryStream())
+            {
+                using (var stream = new CryptoStream(memory, cryptoTransform, CryptoStreamMode.Write))
                 {
-                    byte[] DataToDecrypt = Convert.FromBase64String(ciphertext);
-                    try
-                    {
-                        using (ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor())
-                        {
-                            Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);
-                        }
-                    }
-                    finally
-                    {
-                        TDESAlgorithm.Clear();
-                        HashProvider.Clear();
-                    }
+                    // Transform the bytes as requested
+                    stream.Write(input, 0, input.Length);
+                    stream.FlushFinalBlock();
+
+                    // Read the memory stream and convert it back into byte array
+                    memory.Position = 0;
+                    var result = new byte[memory.Length];
+                    memory.Read(result, 0, result.Length);
+
+                    // Return result
+                    return result;
                 }
             }
-
-            return UTF8.GetString(Results);
         }
     }
 }
