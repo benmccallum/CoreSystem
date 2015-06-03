@@ -66,7 +66,9 @@
     <Compile Include="Helpers\UriHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
     <Compile Include="Infrastructure\Config\ConfigurationManager.cs" />
+    <Compile Include="Infrastructure\Config\CoreSystemConfigurationManager.cs" />
     <Compile Include="Infrastructure\Config\IConfigurationManager.cs" />
+    <Compile Include="Infrastructure\Config\ICoreSystemConfigurationManager.cs" />
     <Compile Include="Mapping\IMapToExisting.cs" />
     <Compile Include="Mapping\IMapToNew.cs" />
     <Compile Include="Models\GeoRegion.cs" />
@@ -91,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sys\ComponentModel\DataAnnotations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\app.config.install.xdt" />
+    <None Include="Content\app.config.uninstall.xdt" />
+    <None Include="Content\web.config.install.xdt" />
+    <None Include="Content\web.config.uninstall.xdt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

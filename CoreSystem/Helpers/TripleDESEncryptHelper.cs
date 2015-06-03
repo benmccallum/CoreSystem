@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreSystem.Infrastructure.Config;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,7 +10,14 @@ namespace CoreSystem.Helpers
     /// </summary>
     public class TripleDESEncryptHelper
     {
-        private const string passphrase = "ram's38reLeasejollA48fartHestuNproven26Abjured";
+        private static string passphrase;
+        private static string Passphrase
+        {
+            get
+            {
+                return passphrase ?? (passphrase = new CoreSystemConfigurationManager().Passphrase);
+            }
+        }
 
         public static string Encrypt(string cleartext)
         {
@@ -18,7 +26,7 @@ namespace CoreSystem.Helpers
 
             using (var HashProvider = new MD5CryptoServiceProvider())
             {
-                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(passphrase));
+                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));
                 using (var TDESAlgorithm = new TripleDESCryptoServiceProvider() { Key = TDESKey, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                 {
                     byte[] DataToEncrypt = UTF8.GetBytes(cleartext);
@@ -47,7 +55,7 @@ namespace CoreSystem.Helpers
 
             using (var HashProvider = new MD5CryptoServiceProvider())
             {
-                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(passphrase));
+                byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));
                 using (var TDESAlgorithm = new TripleDESCryptoServiceProvider() { Key = TDESKey, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                 {
                     byte[] DataToDecrypt = Convert.FromBase64String(ciphertext);

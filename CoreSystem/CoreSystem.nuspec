@@ -17,4 +17,7 @@
       <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
     </frameworkAssemblies>
   </metadata>
+  <files>
+    <file src="Content\*.xdt" target="content" />
+  </files>
 </package>
