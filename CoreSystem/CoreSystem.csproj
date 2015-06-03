@@ -60,7 +60,7 @@
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Helpers\RandomProvider.cs" />
     <Compile Include="Helpers\TaxHelperAus.cs" />
-    <Compile Include="Helpers\TripleDESEncryptHelper.cs" />
+    <Compile Include="Helpers\TripleDESHelper.cs" />
     <Compile Include="Helpers\TypeHelper.cs" />
     <Compile Include="Helpers\UnicodeHelper.cs" />
     <Compile Include="Helpers\UriHelper.cs" />
