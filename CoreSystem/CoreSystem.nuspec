@@ -19,5 +19,6 @@
   </metadata>
   <files>
     <file src="Content\*.xdt" target="content" />
+	<file src="readme.txt" target="" />
   </files>
 </package>
