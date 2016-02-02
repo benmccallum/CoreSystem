@@ -20,17 +20,17 @@ public static class IEnumerableExtensions
         var indexedObj = enumerable.Select((t, index) => new { t, index }).FirstOrDefault(o => Equals(o.t, obj));
         return indexedObj == null ? (int?)null : indexedObj.index;
     }
-    
+
     public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
     {
         return enumerable == null || !enumerable.Any();
     }
-    
+
     public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
     {
         return source.Shuffle(RandomProvider.GetThreadRandom());
     }
-    
+
     public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng)
     {
         T[] elements = source.ToArray();
@@ -43,5 +43,22 @@ public static class IEnumerableExtensions
             yield return elements[swapIndex];
             elements[swapIndex] = elements[i];
         }
+    }
+
+    public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> enumerable, Func<T, TKey> keySelector, bool byAscending)
+    {
+        return byAscending ? enumerable.OrderBy(keySelector) : enumerable.OrderByDescending(keySelector);
+    }
+
+    /// <summary>
+    /// Shortcut for string.Join to build a delimited string.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="items"></param>
+    /// <param name="separator">The separator to use, defaults to comma.</param>
+    /// <returns></returns>
+    public static string ToDelimitedString<T>(this IEnumerable<T> items, string separator = ",")
+    {
+        return string.Join(separator, items);
     }
 }

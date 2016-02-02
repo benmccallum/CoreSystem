@@ -75,6 +75,7 @@
     <Compile Include="Sys\Collections\Generic\ICollectionExtensions.cs" />
     <Compile Include="Sys\Collections\Generic\IEnumerableExtensions.cs" />
     <Compile Include="Sys\Collections\Generic\IListExtensions.cs" />
+    <Compile Include="Sys\EnumExtensions.cs" />
     <Compile Include="Sys\Int32Extensions.cs" />
     <Compile Include="Sys\Linq\Expressions\ExpressionHelper.cs" />
     <Compile Include="Sys\DateTimeExtensions.cs" />
