@@ -125,4 +125,14 @@ public static class StringExtensions
         }
 
     }
+
+    /// <summary>
+    /// Copies a string safely by including a null check.
+    /// </summary>
+    /// <param name="source">String to copy</param>
+    /// <returns>Copy or null</returns>
+    public static string CopyOrDefault(this string source)
+    {
+        return source == null ? null : string.Copy(source);
+    }
 }

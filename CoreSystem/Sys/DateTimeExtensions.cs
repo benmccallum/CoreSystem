@@ -89,4 +89,16 @@ public static class DateTimeExtensions
                 return "th";
         }
     }
+
+    public static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+    /// <summary>
+    /// To JavaScript milliseconds since unix epoch. Great for making Date instances in JavaScript from a .NET DateTime on backend.
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static double ToJavaScriptMilliseconds(this DateTime dt)
+    {
+        return dt.ToUniversalTime().Subtract(UnixEpoch).TotalMilliseconds;
+    }
 }
